@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" href="../images/loho.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | CraftedPixels</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+    header {
+      background-color: #222;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .about-card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .about-card:hover {
+      transform: translateY(-5px);
+    }
+    .about-card h3 {
+      margin-top: 0;
+      color: #0066cc;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+      color: #fff;
+      margin-top: 40px;
+    }
+    .footer {
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>About CraftedPixels</h1>
+    <p>Discover who we are, our journey, and our design philosophy.</p>
+  </header>
+
+  <section class="about">
+    <a href="our-team.html" class="about-card">
+      <h3>Our Team</h3>
+      <p>We’re a dedicated collective of graphic and web designers driven by creativity and precision.</p>
+    </a>
+    <a href="our-story.html" class="about-card">
+      <h3>Our Story</h3>
+      <p>From a shared idea to a global creative studio, CraftedPixels has evolved by staying true to our vision.</p>
+    </a>
+    <a href="our-approach.html" class="about-card">
+      <h3>Our Approach</h3>
+      <p>We combine timeless design principles with modern technologies to create user-centered designs.</p>
+    </a>
+    <a href="join-us.html" class="about-card">
+      <h3>Join Us</h3>
+      <p>Are you a designer, developer, or creative thinker? Explore opportunities to collaborate with us.</p>
+    </a>
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 CraftedPixels. All rights reserved.
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
