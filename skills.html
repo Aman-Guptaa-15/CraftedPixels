@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Skills</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* Header Section */
+    .skills-header {
+      background-color: #1f1f1f;
+      color: white;
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    .skills-header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .skills-header p {
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    /* Grid Layout */
+    .skills-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    /* Skill Card */
+    .skill-card {
+      background: #e9ffe3;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .bar-container {
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      height: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 10px;
+    }
+
+    .html { width: 95%; background-color: #f44336; }
+    .uiux { width: 90%; background-color: #2196f3; }
+    .photoshop { width: 88%; background-color: #ffca28; }
+    .responsive { width: 92%; background-color: #26a69a; }
+    .branding { width: 85%; background-color: #8e24aa; }
+
+    .description {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="skills-header">
+    <h1>My Skills</h1>
+    <p>Designing, coding, and crafting digital experiences with precision and creativity.</p>
+  </section>
+
+  <section class="skills-grid">
+
+    <div class="skill-card">
+      <h3>HTML / CSS / JavaScript</h3>
+      <div class="bar-container"><div class="bar html"></div></div>
+      <p class="description">
+        I specialize in building clean, efficient, and accessible websites using modern HTML5, CSS3, and JavaScript ES6+. Whether it's a simple landing page or a complex interactive interface, I focus on writing semantic code and optimizing performance for a seamless user experience.
+      </p>
+    </div>
+
+    <div class="skill-card">
+      <h3>UI / UX Design</h3>
+      <div class="bar-container"><div class="bar uiux"></div></div>
+      <p class="description">
+        I create intuitive and visually appealing user interfaces by combining user research, wireframing, prototyping, and usability testing. I believe great design is about solving problems and guiding users with clarity and empathy.
+      </p>
+    </div>
+
+    <div class="skill-card">
+      <h3>Adobe Photoshop / Illustrator</h3>
+      <div class="bar-container"><div class="bar photoshop"></div></div>
+      <p class="description">
+        With years of experience in Adobe Photoshop and Illustrator, I produce high-quality graphics for both web and print. From detailed image editing to vector illustrations, I bring creativity and technical precision to every design project.
+      </p>
+    </div>
+
+    <div class="skill-card">
+      <h3>Responsive Web Design</h3>
+      <div class="bar-container"><div class="bar responsive"></div></div>
+      <p class="description">
+        I ensure that every website I build looks and functions perfectly across all screen sizes and devices. By leveraging mobile-first design principles and responsive frameworks, I deliver user-friendly experiences that work everywhere.
+      </p>
+    </div>
+
+    <div class="skill-card">
+      <h3>Brand Identity & Logo Design</h3>
+      <div class="bar-container"><div class="bar branding"></div></div>
+      <p class="description">
+        I help businesses stand out by crafting memorable logos and brand systems. From concept to execution, I focus on building visual identities that reflect the brand's mission, values, and personality — ensuring consistency across all platforms.
+      </p>
+    </div>
+
+  </section>
+
+</body>
+</html>
