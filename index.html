@@ -137,7 +137,28 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+      Pages
+    </a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="about.html">About Us</a></li>
+      <li><a class="dropdown-item" href="contact.html">Contact Us</a></li>
+      <li><a class="dropdown-item" href="services.html">Services</a></li>
+    </ul>
+  </li>
+</ul>
+
+<!-- Mobile login/profile placeholder (inside collapse menu) -->
+<ul class="navbar-nav d-lg-none" id="mobileAuthArea"></ul>
+
+<!-- Desktop login/profile placeholder (top-right) -->
+<ul class="navbar-nav ms-auto d-none d-lg-flex" id="authArea"></ul>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Pages</a>
             <ul class="dropdown-menu">
@@ -439,10 +460,11 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const authArea = document.getElementById("authArea");
+    const mobileAuthArea = document.getElementById("mobileAuthArea");
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (user) {
-      // Show profile dropdown
+      // Desktop dropdown
       authArea.innerHTML = `
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -450,19 +472,41 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
-            <li><a class="dropdown-item" id="logoutBtn" href="#">Logout</a></li>
+            <li><a class="dropdown-item" id="logoutBtnDesk" href="#">Logout</a></li>
           </ul>
         </li>
       `;
 
-      document.getElementById("logoutBtn").addEventListener("click", function() {
+      // Mobile dropdown
+      mobileAuthArea.innerHTML = `
+        <li class="nav-item">
+          <a class="nav-link" href="profile.html">My Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="logoutBtnMob" href="#">Logout</a>
+        </li>
+      `;
+
+      // Logout buttons
+      document.getElementById("logoutBtnDesk").addEventListener("click", () => {
+        localStorage.removeItem("user");
+        location.reload();
+      });
+      document.getElementById("logoutBtnMob").addEventListener("click", () => {
         localStorage.removeItem("user");
         location.reload();
       });
 
     } else {
-      // Show login link
+      // Not logged in (Desktop)
       authArea.innerHTML = `
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+      `;
+
+      // Not logged in (Mobile)
+      mobileAuthArea.innerHTML = `
         <li class="nav-item">
           <a class="nav-link" href="login.html">Login</a>
         </li>
@@ -470,6 +514,7 @@
     }
   });
 </script>
+
 
 </body>
 </html>
