@@ -128,57 +128,53 @@
 
 <!-- HEADER -->
 <header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <img src="../images/loho.png" alt="" width="70px" style="border-radius: 50%" />
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-      Pages
+  <!-- ✅ Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/img/logo.png" alt="Logo" width="40" height="40">
     </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="about.html">About Us</a></li>
-      <li><a class="dropdown-item" href="contact.html">Contact Us</a></li>
-      <li><a class="dropdown-item" href="services.html">Services</a></li>
-    </ul>
-  </li>
-</ul>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<!-- Mobile login/profile placeholder (inside collapse menu) -->
-<ul class="navbar-nav d-lg-none" id="mobileAuthArea"></ul>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Pages
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <li><a class="dropdown-item" href="#">About</a></li>
+            <li><a class="dropdown-item" href="#">Services</a></li>
+            <li><a class="dropdown-item" href="#">Contact</a></li>
+          </ul>
+        </li>
+      </ul>
 
-<!-- Desktop login/profile placeholder (top-right) -->
-<ul class="navbar-nav ms-auto d-none d-lg-flex" id="authArea"></ul>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Pages</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="about.html">About Us</a></li>
-              <li><a class="dropdown-item" href="contact.html">Contact Us</a></li>
-              <li><a class="dropdown-item" href="services.html">Services</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <ul class="navbar-nav ms-auto" id="authArea">
-  <!-- Login/Profile will appear here -->
-</ul>
-
-      </div>
+      <!-- ✅ Login/Profile button (desktop + mobile, no duplicates) -->
+      <ul class="navbar-nav">
+        <li class="nav-item" id="loginNavItem">
+          <a class="nav-link" href="login.html"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+        </li>
+        <li class="nav-item dropdown d-none" id="profileNavItem">
+          <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle"></i> <span id="navUsername">Profile</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+            <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 </header>
 
 <!-- CAROUSEL -->
@@ -458,59 +454,29 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const authArea = document.getElementById("authArea");
-    const mobileAuthArea = document.getElementById("mobileAuthArea");
+  document.addEventListener("DOMContentLoaded", () => {
+    const loginNavItem = document.getElementById("loginNavItem");
+    const profileNavItem = document.getElementById("profileNavItem");
+    const navUsername = document.getElementById("navUsername");
+    const logoutBtn = document.getElementById("logoutBtn");
+
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (user) {
-      // Desktop dropdown
-      authArea.innerHTML = `
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            <i class="bi bi-person-circle" style="font-size:1.5rem;"></i>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
-            <li><a class="dropdown-item" id="logoutBtnDesk" href="#">Logout</a></li>
-          </ul>
-        </li>
-      `;
-
-      // Mobile dropdown
-      mobileAuthArea.innerHTML = `
-        <li class="nav-item">
-          <a class="nav-link" href="profile.html">My Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="logoutBtnMob" href="#">Logout</a>
-        </li>
-      `;
-
-      // Logout buttons
-      document.getElementById("logoutBtnDesk").addEventListener("click", () => {
-        localStorage.removeItem("user");
-        location.reload();
-      });
-      document.getElementById("logoutBtnMob").addEventListener("click", () => {
-        localStorage.removeItem("user");
-        location.reload();
-      });
-
+      loginNavItem.classList.add("d-none");
+      profileNavItem.classList.remove("d-none");
+      navUsername.textContent = user.username || "Profile";
     } else {
-      // Not logged in (Desktop)
-      authArea.innerHTML = `
-        <li class="nav-item">
-          <a class="nav-link" href="login.html">Login</a>
-        </li>
-      `;
+      loginNavItem.classList.remove("d-none");
+      profileNavItem.classList.add("d-none");
+    }
 
-      // Not logged in (Mobile)
-      mobileAuthArea.innerHTML = `
-        <li class="nav-item">
-          <a class="nav-link" href="login.html">Login</a>
-        </li>
-      `;
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("user");
+        window.location.href = "index.html";
+      });
     }
   });
 </script>
