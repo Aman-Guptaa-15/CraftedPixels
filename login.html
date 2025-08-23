@@ -1,89 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login | CraftedPixels</title>
-  <link rel="shortcut icon" href="../images/loho.png" type="image/x-icon" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - CraftedPixels</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <!-- NAVBAR -->
-  <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <img src="../images/loho.png" alt="logo" width="70px" style="border-radius: 50%;" />
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Pages</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="about.html">About Us</a></li>
-                <li><a class="dropdown-item" href="contact.html">Contact Us</a></li>
-                <li><a class="dropdown-item" href="services.html">Services</a></li>
-              </ul>
-            </li>
-          </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" />
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </nav>
-  </header>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
 
-  <!-- LOGIN FORM -->
-  <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-    <form id="loginForm" class="p-4 bg-white shadow rounded" style="width: 350px;">
-      <h3 class="text-center mb-4">Login</h3>
+  <div class="card shadow p-4" style="width: 350px;">
+    <h3 class="text-center mb-4">Login</h3>
+    <form id="loginForm">
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" required />
+        <input type="email" class="form-control" id="email" required>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" required />
+        <input type="password" class="form-control" id="password" required>
       </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="rememberMe" />
-        <label class="form-check-label" for="rememberMe">Remember me</label>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="rememberMe">
+        <label class="form-check-label" for="rememberMe">
+          Remember me
+        </label>
       </div>
-      <button type="submit" class="btn btn-success w-100">Continue</button>
+      <!-- keep it submit type -->
+      <button type="submit" class="btn btn-success w-100" id="loginBtn">Continue</button>
     </form>
   </div>
 
-  <!-- SCRIPT -->
   <script>
-    document.getElementById("loginForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("loginForm");
 
-      // Send data to backend
-      const res = await fetch("/login", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ email, password })
-      });
+      form.addEventListener("submit", function(e) {
+        e.preventDefault(); // prevent page reload
 
-      const data = await res.json();
-      if (data.success) {
-        // Store user in localStorage
-        localStorage.setItem("user", JSON.stringify(data.user));
-        // Redirect to home
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // save user to localStorage
+        const user = { email, password };
+        localStorage.setItem("user", JSON.stringify(user));
+
+        // redirect to index.html
         window.location.href = "index.html";
-      } else {
-        alert("Invalid email or password");
-      }
+      });
     });
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
